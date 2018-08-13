@@ -1,0 +1,2 @@
+build_modname=graspit
+build_base="$layout_working_dir"

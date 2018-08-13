@@ -1,0 +1,16 @@
+runtime_require_shellenv module "$layout_working_dir"
+runtime_require_shellenv interactive "$layout_working_dir"
+runtime_require_shellenv build "$layout_working_dir"
+runtime_require_layout_init buildmodule "$layout_working_dir"
+
+myclean() {
+    rm -rf "$mod_graspit_builddir"
+    mkdir -p "$mod_graspit_builddir"
+}
+mycmake() {
+    mkdir -p "$mod_graspit_builddir"
+    (
+        cd "$mod_graspit_builddir"
+        cmake -DCMAKE_INSTALL_PREFIX="$mod_graspit_localprefix" ..
+    )
+}
