@@ -3,6 +3,8 @@ runtime_require_shellenv interactive "$layout_working_dir"
 runtime_require_shellenv build "$layout_working_dir"
 runtime_require_layout_init buildmodule "$layout_working_dir"
 
+mod_graspit_here="$layout_working_dir"
+
 myclean() {
     rm -rf "$mod_graspit_builddir"
     mkdir -p "$mod_graspit_builddir"
@@ -13,4 +15,8 @@ mycmake() {
         cd "$mod_graspit_builddir"
         cmake -DCMAKE_INSTALL_PREFIX="$mod_graspit_localprefix" ..
     )
+}
+
+buildshell() {
+    (layout_init buildmodule "$mod_graspit_here"; repl -p graspit-build)
 }
