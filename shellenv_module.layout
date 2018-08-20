@@ -1,0 +1,1 @@
+shellenv_add_recursive_entry "./dependencies/" shellenv_module "$layout_working_dir/dependencies" shellenv

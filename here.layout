@@ -1,22 +1,16 @@
-runtime_require_shellenv module "$layout_working_dir"
-runtime_require_shellenv interactive "$layout_working_dir"
-runtime_require_shellenv build "$layout_working_dir"
-runtime_require_layout_init buildmodule "$layout_working_dir"
+eval "$(tsb -C shellenv_interactive -p "$layout_working_dir")"
+eval "$(tsb -C shellenv_build -p "$layout_working_dir")"
 
 mod_graspit_here="$layout_working_dir"
 
-myclean() {
-    rm -rf "$mod_graspit_builddir"
-    mkdir -p "$mod_graspit_builddir"
-}
-mycmake() {
-    mkdir -p "$mod_graspit_builddir"
-    (
-        cd "$mod_graspit_builddir"
-        cmake -DCMAKE_INSTALL_PREFIX="$mod_graspit_localprefix" ..
-    )
-}
-
 buildshell() {
-    (layout_init buildmodule "$mod_graspit_here"; repl -p graspit-build)
+    (layout_init buildmodule "$mod_graspit_here"; echo "$mod_graspit_here" | programmableRepl replGreeting )
+}
+fixUpSoQtLib() {
+    (layout_init buildmodule "$mod_graspit_qt_root"; 
+
+        echo "would do>" ln -sf "$build_prefix/lib/libSoQt.so" "$build_prefix/lib/libSoQt4.so"
+        asksure || return 1
+        ln -sf "$build_prefix/lib/libSoQt.so" "$build_prefix/lib/libSoQt4.so"
+    )
 }

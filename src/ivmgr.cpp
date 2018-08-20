@@ -670,10 +670,10 @@ IVmgr::transRot(DraggerInfo *dInfo)
       //if (enabled) myCenterball->enableValueChangedCallbacks(TRUE);
       return;
     }
-    desiredRotation.x() = myCenterball->rotation.getValue()[0];
-    desiredRotation.y() = myCenterball->rotation.getValue()[1];
-    desiredRotation.z() = myCenterball->rotation.getValue()[2];
-    desiredRotation.w() = myCenterball->rotation.getValue()[3];
+    desiredRotation.x() = myCenterball->rotation.getValue().getValue()[0];
+    desiredRotation.y() = myCenterball->rotation.getValue().getValue()[1];
+    desiredRotation.z() = myCenterball->rotation.getValue().getValue()[2];
+    desiredRotation.w() = myCenterball->rotation.getValue().getValue()[3];
     SbVec3fTovec3(dInfo->draggerTran->scaleFactor.getValue(), scale);
     SbVec3fTovec3(myCenterball->center.getValue(),center);
     center *= scale[0];

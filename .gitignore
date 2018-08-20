@@ -1,3 +1,5 @@
+/__CMM_wo_soqt
+/dependencies
 build/*
 *~
 CMakeLists.txt.user

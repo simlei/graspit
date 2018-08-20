@@ -1,1 +1,4 @@
 shellenv_build_default
+
+# This controls whether we use system or self built deps (no comment = self built)
+# shellenv_add_recursive_entry ./deps/ shellenv_build "$layout_working_dir/dependencies"
